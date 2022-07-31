@@ -13,8 +13,18 @@ internal class MyFirstPlugin : Plugin<Project> {
     }
 
     override fun apply(project: Project) {
-        project.android().variants().all { variant ->
+        project.tasks.register("greeting", GreetingTask::class.java) { greetingTask ->
+            greetingTask.group = "MyPluginTasks"
 
+        }
+
+        project.android().variants().all { variant ->
+            println(variant.name)
+            println(variant.sourceSets)
+            variant.sourceSets.forEach { sourceSet ->
+                println("Sourceset: ${sourceSet.javaDirectories}")
+
+            }
             val colorTaskName = "generateColors${variant.name.capitalize()}"
             val outputPath = "${project.buildDir}/generated/res"
 

@@ -15,6 +15,7 @@ internal open class ColorsTask : DefaultTask() {
 
     @TaskAction
     fun makeResources() {
+        println("makeResources ${outputFile.path}")
         // Simple CSV parsing mechanism. For more complex use cases we may want to use a dedicated library
         inputFile.readLines().map { color ->
             color.split(",")

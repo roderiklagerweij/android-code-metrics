@@ -1,0 +1,4 @@
+/Users/roderiklagerweij/Documents/workspace/PluginSample/buildSrc/src/main/java/MyFirstPlugin.kt
+/Users/roderiklagerweij/Documents/workspace/PluginSample/buildSrc/src/main/java/extensions/Extensions.kt
+/Users/roderiklagerweij/Documents/workspace/PluginSample/buildSrc/src/main/java/extensions/Functions.kt
+/Users/roderiklagerweij/Documents/workspace/PluginSample/buildSrc/src/main/java/ColorsTask.kt

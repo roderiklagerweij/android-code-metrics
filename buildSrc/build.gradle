@@ -2,7 +2,7 @@ apply plugin: 'java-gradle-plugin' // Allows us to create and configure plugin
 apply plugin: 'kotlin' //We'll write our plugin in Kotlin
 
 buildscript {
-	ext.kotlin_version = '1.3.71'
+	ext.kotlin_version = '1.6.21'
 	ext.gradle_version = '3.5.3'
 	repositories {
 		google()
