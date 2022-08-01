@@ -1,4 +1,7 @@
 import com.google.common.io.Files
+import data.api.AuthApi
+import data.api.UploadApi
+import domain.AnalysisResult
 import extensions.android
 import extensions.variants
 import modules.loc.LocCounter
@@ -8,7 +11,22 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
 import java.nio.charset.Charset
 
-abstract class GreetingTask : DefaultTask() {
+/*
+* get config V
+* post result call V
+* serialise analysisresult
+* project id
+* pass token
+* Test multi module
+* Release
+*
+* Duplicate blocks
+* Code complexity
+* Retry network calls
+*
+ */
+
+abstract class AnalyseTask : DefaultTask() {
     @get:Input
     abstract val greeting: Property<String>
 
@@ -20,6 +38,18 @@ abstract class GreetingTask : DefaultTask() {
 
     @TaskAction
     fun greet() {
+        val codeMetricsPluginExtension =
+            project.extensions.getByType(CodeMetricsPluginExtension::class.java)
+                ?: return
+
+        val projectId = codeMetricsPluginExtension.projectId ?: return
+        val token = codeMetricsPluginExtension.token ?: return
+
+        if (!AuthApi().validateProjectIdAndToken(projectId, token)) {
+            println("Not authorized. Are projectId and token correct?")
+            return
+        }
+
         project.android().variants().forEach { variant ->
             println("Variant: ${variant.name}")
             variant.sourceSets.forEach { sourceSet ->
@@ -36,9 +66,6 @@ abstract class GreetingTask : DefaultTask() {
             }
         }
         println(greeting.get())
+        UploadApi().postAnalysisResult(AnalysisResult(loc = 100))
     }
-
-//    private fun getFilesRecursively(path : File) : List<File>{
-//        val files = listOf<File>()
-//    }
 }

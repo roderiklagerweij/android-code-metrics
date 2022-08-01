@@ -5,7 +5,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import java.io.File
 
-internal class MyFirstPlugin : Plugin<Project> {
+internal class AnalysePlugin : Plugin<Project> {
 
     companion object {
         // All clients of this plugin will need to use this specific file name
@@ -13,10 +13,11 @@ internal class MyFirstPlugin : Plugin<Project> {
     }
 
     override fun apply(project: Project) {
-        project.tasks.register("greeting", GreetingTask::class.java) { greetingTask ->
+        project.extensions.create("codeMetrics", CodeMetricsPluginExtension::class.java)
+        project.tasks.register("greeting", AnalyseTask::class.java) { greetingTask ->
             greetingTask.group = "MyPluginTasks"
-
         }
+        println(project.properties)
 
         project.android().variants().all { variant ->
             println(variant.name)
@@ -58,4 +59,9 @@ internal class MyFirstPlugin : Plugin<Project> {
             }
         }
     }
+}
+
+open class CodeMetricsPluginExtension {
+    var projectId : String? = null
+    var token : String? = null
 }
