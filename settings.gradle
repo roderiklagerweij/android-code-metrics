@@ -1,2 +1,3 @@
 rootProject.name='PluginSample'
 include ':app'
+include ':mylibrary'
