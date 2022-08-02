@@ -14,9 +14,10 @@ import java.nio.charset.Charset
 /*
 * get config V
 * post result call V
-* serialise analysisresult
-* project id
-* pass token
+* project id V
+* pass token V
+* serialise analysis result V
+* actual authentication V
 * Test multi module
 * Release
 *
