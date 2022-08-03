@@ -6,10 +6,7 @@ import extensions.android
 import extensions.variants
 import modules.loc.LocCounter
 import org.gradle.api.DefaultTask
-import org.gradle.api.provider.Property
-import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
-import org.gradle.internal.impldep.com.google.common.io.Files
 import java.nio.charset.Charset
 
 /*
@@ -61,8 +58,9 @@ abstract class AnalyseTask : DefaultTask() {
                     tree.include("**/*.kt")
                     tree.files.forEach { file ->
                         println(file.path)
-                        val lines = Files.readLines(file, Charset.defaultCharset())
-                        println("Lines: ${locCounter.count(lines)}")
+
+//                        val lines = Files.readLines(file, Charset.defaultCharset())
+//                        println("Lines: ${locCounter.count(lines)}")
                     }
                 }
             }

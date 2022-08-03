@@ -2,10 +2,10 @@ package data.api
 
 import com.google.gson.Gson
 import domain.AnalysisResult
-import org.gradle.internal.impldep.org.apache.http.client.methods.HttpPost
-import org.gradle.internal.impldep.org.apache.http.entity.ContentType
-import org.gradle.internal.impldep.org.apache.http.entity.StringEntity
-import org.gradle.internal.impldep.org.apache.http.impl.client.HttpClients
+import org.apache.hc.client5.http.classic.methods.HttpPost
+import org.apache.hc.client5.http.impl.classic.HttpClients
+import org.apache.hc.core5.http.ContentType
+import org.apache.hc.core5.http.io.entity.StringEntity
 
 class UploadApi {
 
@@ -18,7 +18,7 @@ class UploadApi {
         )
 
         val response = client.execute(post)
-        if (response.statusLine.statusCode == 200) {
+        if (response.code == 200) {
             println("Results posted")
         } else {
             println("Error posting results")

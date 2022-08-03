@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'AnalysePlugin'
 
 android {
     compileSdkVersion 32
@@ -34,10 +35,10 @@ android {
     namespace 'com.magicbluepenguin.pluginsample'
 }
 
-//codeMetrics {
-//    projectId = "1234567890"
-//    token = "0987654321"
-//}
+codeMetrics {
+    projectId = "1234567890"
+    token = "0987654321"
+}
 
 dependencies {
     implementation project(path: ':mylibrary')
