@@ -2,9 +2,10 @@ package data.api
 
 import com.google.gson.Gson
 import domain.AnalysisResult
-import org.apache.http.client.methods.HttpPost
-import org.apache.http.entity.StringEntity
-import org.apache.http.impl.client.HttpClients
+import org.gradle.internal.impldep.org.apache.http.client.methods.HttpPost
+import org.gradle.internal.impldep.org.apache.http.entity.ContentType
+import org.gradle.internal.impldep.org.apache.http.entity.StringEntity
+import org.gradle.internal.impldep.org.apache.http.impl.client.HttpClients
 
 class UploadApi {
 
@@ -13,8 +14,7 @@ class UploadApi {
         val post = HttpPost("http://127.0.0.1:8000/results")
         post.entity = StringEntity(
             Gson().getAdapter(AnalysisResult::class.java).toJson(analysisResult),
-            "application/json",
-            "UTF-8"
+            ContentType.APPLICATION_JSON
         )
 
         val response = client.execute(post)

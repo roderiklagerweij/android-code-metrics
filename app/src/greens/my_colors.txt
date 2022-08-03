@@ -1,3 +1,0 @@
-color1,#00ff00
-color2,#20ab06
-color3,#0d4402

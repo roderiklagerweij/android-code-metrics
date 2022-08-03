@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'AnalysePlugin'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "com.magicbluepenguin.pluginsample"
-        minSdkVersion 23
-        targetSdkVersion 29
+        minSdkVersion 26
+        targetSdkVersion 32
         versionCode 1
         versionName "1.0"
     }
@@ -18,6 +17,13 @@ android {
             minifyEnabled false
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 
     String dimen = "palette"
     flavorDimensions dimen
@@ -25,12 +31,13 @@ android {
         reds { dimension dimen }
         greens { dimension dimen }
     }
+    namespace 'com.magicbluepenguin.pluginsample'
 }
 
-codeMetrics {
-    projectId = "1234567890"
-    token = "0987654321"
-}
+//codeMetrics {
+//    projectId = "1234567890"
+//    token = "0987654321"
+//}
 
 dependencies {
     implementation project(path: ':mylibrary')

@@ -1,4 +1,4 @@
-import com.google.common.io.Files
+//import com.google.common.io.Files
 import data.api.AuthApi
 import data.api.UploadApi
 import domain.AnalysisResult
@@ -9,6 +9,7 @@ import org.gradle.api.DefaultTask
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.TaskAction
+import org.gradle.internal.impldep.com.google.common.io.Files
 import java.nio.charset.Charset
 
 /*
@@ -28,13 +29,13 @@ import java.nio.charset.Charset
  */
 
 abstract class AnalyseTask : DefaultTask() {
-    @get:Input
-    abstract val greeting: Property<String>
+//    @get:Input
+//    abstract val greeting: Property<String>
 
     private val locCounter = LocCounter()
 
     init {
-        greeting.convention("hello from GreetingTask")
+//        greeting.convention("hello from GreetingTask")
     }
 
     @TaskAction
@@ -66,7 +67,7 @@ abstract class AnalyseTask : DefaultTask() {
                 }
             }
         }
-        println(greeting.get())
+//        println(greeting.get())
         UploadApi().postAnalysisResult(AnalysisResult(loc = 100))
     }
 }

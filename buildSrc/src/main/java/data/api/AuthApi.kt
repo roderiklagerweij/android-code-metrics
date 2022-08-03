@@ -1,7 +1,7 @@
 package data.api
 
-import org.apache.http.client.methods.HttpGet
-import org.apache.http.impl.client.HttpClients
+import org.gradle.internal.impldep.org.apache.http.client.methods.HttpGet
+import org.gradle.internal.impldep.org.apache.http.impl.client.HttpClients
 
 class AuthApi {
 
