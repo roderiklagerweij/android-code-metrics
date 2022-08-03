@@ -60,6 +60,7 @@ abstract class AnalyseTask : DefaultTask() {
                     sourceSet.javaDirectories.forEach { javaDirectory ->
                         val tree = project.fileTree(javaDirectory)
                         tree.include("**/*.kt")
+                        tree.include("**/*.java")
                         tree.files.forEach { file ->
                             println(file.path)
                             val lines = Files.readLines(file, Charset.defaultCharset())
