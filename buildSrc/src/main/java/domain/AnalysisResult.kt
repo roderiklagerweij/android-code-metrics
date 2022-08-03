@@ -1,6 +1,8 @@
 package domain
 
 
-data class AnalysisResult(val loc : Int) {
+data class AnalysisResult(
+    val moduleName : String,
+    val loc : Int) {
 
 }

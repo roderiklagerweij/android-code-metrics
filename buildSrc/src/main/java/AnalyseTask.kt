@@ -20,7 +20,7 @@ import java.nio.charset.Charset
 * pass token V
 * serialise analysis result V
 * actual authentication V
-* Test multi module
+* Test multi module V
 * Release
 *
 * Duplicate blocks
@@ -50,6 +50,8 @@ abstract class AnalyseTask : DefaultTask() {
             println("Not authorized. Are projectId and token correct?")
             return
         }
+
+        var loc = 0
         run {
             project.android().variants().forEach { variant ->
                 println("Variant: ${variant.name}")
@@ -61,6 +63,7 @@ abstract class AnalyseTask : DefaultTask() {
                         tree.files.forEach { file ->
                             println(file.path)
                             val lines = Files.readLines(file, Charset.defaultCharset())
+                            loc += locCounter.count(lines)
                             println("Lines: ${locCounter.count(lines)}")
                         }
                     }
@@ -68,7 +71,10 @@ abstract class AnalyseTask : DefaultTask() {
                 return@run
             }
         }
-//        println(greeting.get())
-        UploadApi().postAnalysisResult(AnalysisResult(loc = 100))
+
+        UploadApi().postAnalysisResult(AnalysisResult(
+            moduleName = project.name,
+            loc = loc
+        ))
     }
 }
