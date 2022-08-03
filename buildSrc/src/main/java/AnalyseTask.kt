@@ -1,13 +1,18 @@
-//import com.google.common.io.Files
+import com.google.common.io.Files
 import data.api.AuthApi
 import data.api.UploadApi
 import domain.AnalysisResult
 import extensions.android
 import extensions.variants
 import modules.loc.LocCounter
+//import org.apache.groovy.nio.extensions.NioExtensions.readLines
+//import org.apache.tools.ant.types.resources.Files
+import org.codehaus.groovy.runtime.ResourceGroovyMethods.readLines
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 import java.nio.charset.Charset
+
+//import java.nio.charset.Charset
 
 /*
 * get config V
@@ -26,8 +31,6 @@ import java.nio.charset.Charset
  */
 
 abstract class AnalyseTask : DefaultTask() {
-//    @get:Input
-//    abstract val greeting: Property<String>
 
     private val locCounter = LocCounter()
 
@@ -48,21 +51,22 @@ abstract class AnalyseTask : DefaultTask() {
             println("Not authorized. Are projectId and token correct?")
             return
         }
-
-        project.android().variants().forEach { variant ->
-            println("Variant: ${variant.name}")
-            variant.sourceSets.forEach { sourceSet ->
-                println("\t${sourceSet.name} ${sourceSet.javaDirectories}")
-                sourceSet.javaDirectories.forEach { javaDirectory ->
-                    val tree = project.fileTree(javaDirectory)
-                    tree.include("**/*.kt")
-                    tree.files.forEach { file ->
-                        println(file.path)
-
-//                        val lines = Files.readLines(file, Charset.defaultCharset())
-//                        println("Lines: ${locCounter.count(lines)}")
+        run {
+            project.android().variants().forEach { variant ->
+                println("Variant: ${variant.name}")
+                variant.sourceSets.forEach { sourceSet ->
+                    println("\t${sourceSet.name} ${sourceSet.javaDirectories}")
+                    sourceSet.javaDirectories.forEach { javaDirectory ->
+                        val tree = project.fileTree(javaDirectory)
+                        tree.include("**/*.kt")
+                        tree.files.forEach { file ->
+                            println(file.path)
+                            val lines = Files.readLines(file, Charset.defaultCharset())
+                            println("Lines: ${locCounter.count(lines)}")
+                        }
                     }
                 }
+                return@run
             }
         }
 //        println(greeting.get())
