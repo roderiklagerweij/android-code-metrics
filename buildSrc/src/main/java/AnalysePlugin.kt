@@ -17,7 +17,7 @@ internal class AnalysePlugin : Plugin<Project> {
         project.tasks.register("greeting", AnalyseTask::class.java) { greetingTask ->
             greetingTask.group = "MyPluginTasks"
         }
-        println(project.properties)
+//        println(project.properties)
 
         project.android().variants().all { variant ->
 //            println(variant.name)

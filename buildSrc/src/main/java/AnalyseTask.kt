@@ -1,3 +1,5 @@
+//import org.apache.groovy.nio.extensions.NioExtensions.readLines
+//import org.apache.tools.ant.types.resources.Files
 import com.google.common.io.Files
 import data.api.AuthApi
 import data.api.UploadApi
@@ -5,9 +7,6 @@ import domain.AnalysisResult
 import extensions.android
 import extensions.variants
 import modules.loc.LocCounter
-//import org.apache.groovy.nio.extensions.NioExtensions.readLines
-//import org.apache.tools.ant.types.resources.Files
-import org.codehaus.groovy.runtime.ResourceGroovyMethods.readLines
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 import java.nio.charset.Charset
