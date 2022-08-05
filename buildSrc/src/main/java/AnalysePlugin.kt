@@ -3,6 +3,7 @@ import extensions.variants
 import org.gradle.api.GradleException
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.language.base.plugins.LifecycleBasePlugin
 import java.io.File
 
 internal class AnalysePlugin : Plugin<Project> {
