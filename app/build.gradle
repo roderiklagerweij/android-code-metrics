@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'android-code-metrics'
+//    id 'android-code-metrics'
 }
 
 android {
@@ -37,10 +37,10 @@ android {
     namespace 'com.magicbluepenguin.pluginsample'
 }
 
-codeMetrics {
-    projectId = "1234567890"
-    token = "0987654321"
-}
+//codeMetrics {
+//    projectId = "1234567890"
+//    token = "0987654321"
+//}
 
 dependencies {
     implementation project(path: ':mylibrary')

@@ -3,7 +3,7 @@
 plugins {
     `kotlin-dsl`
     `java-gradle-plugin`
-    kotlin("jvm") version "1.7.10"
+//    kotlin("jvm") version "1.7.10"
     `maven-publish`
     id("com.gradle.plugin-publish") version "0.15.0"
 }
@@ -26,12 +26,12 @@ buildscript {
 //group = "com.github.bendezu"
 //version = "0.0.1"
 
-//pluginBundle {
-//    website = "https://github.com/bendezu/android-resource-override-finder"
+pluginBundle {
+    website = "https://http://mobilemetrics.herokuapp.com/"
 //    vcsUrl = "https://github.com/bendezu/android-resource-override-finder.git"
-//    tags = listOf("android", "resource", "override")
-//}
-//
+    tags = listOf("android")
+}
+
 gradlePlugin {
     plugins.create("android-code-metrics") {
         id = "android-code-metrics"
