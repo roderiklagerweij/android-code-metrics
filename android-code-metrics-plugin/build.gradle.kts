@@ -23,25 +23,22 @@ buildscript {
     }
 }
 
-//group = "com.github.bendezu"
-//version = "0.0.1"
-
 pluginBundle {
-    website = "https://http://mobilemetrics.herokuapp.com/"
-//    vcsUrl = "https://github.com/bendezu/android-resource-override-finder.git"
+    website = "http://mobilemetrics.herokuapp.com/"
+    vcsUrl = "https://github.com/roderiklagerweij/android-code-metrics/"
     tags = listOf("android")
 }
 
 gradlePlugin {
     plugins.create("android-code-metrics") {
-        id = "android-code-metrics"
-        displayName = "Android Resource Override Finder"
-        description = "A plugin that finds resource overrides in android project"
+        id = "com.rl.android-code-metrics"
+        displayName = "Android Code Metrics"
+        description = "A plugin that analyses Android source code and uploads to MobileMetrics site"
         implementationClass = "AnalysePlugin"
     }
 }
-group = "com.rl"
-version = "1.0-SNAPSHOT"
+group = "com.rl.androidcodemetrics"
+version = "0.1"
 
 repositories {
     google()
