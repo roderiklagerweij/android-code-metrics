@@ -2,7 +2,7 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
-apply plugin: 'AnalysePlugin'
+//apply plugin: 'AnalysePlugin'
 
 android {
     compileSdkVersion 32
@@ -38,10 +38,10 @@ android {
     namespace 'com.example.mylibrary'
 }
 
-codeMetrics {
-    projectId = "1234567890"
-    token = "0987654321"
-}
+//codeMetrics {
+//    projectId = "1234567890"
+//    token = "0987654321"
+//}
 
 dependencies {
 

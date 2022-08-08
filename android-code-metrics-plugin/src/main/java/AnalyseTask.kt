@@ -6,6 +6,8 @@ import data.api.UploadApi
 import domain.AnalysisResult
 import extensions.android
 import extensions.variants
+//import extensions.android
+//import extensions.variants
 import modules.loc.LocCounter
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
@@ -39,6 +41,7 @@ abstract class AnalyseTask : DefaultTask() {
 
     @TaskAction
     fun greet() {
+        println("GREET?1")
         val codeMetricsPluginExtension =
             project.extensions.getByType(CodeMetricsPluginExtension::class.java)
                 ?: return
